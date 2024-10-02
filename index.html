@@ -3,7 +3,7 @@
     <head>
       <script>
         // Check if the user is logged in
-        if (!localStorage.getItem('isLoggedIn')) {
+        if (!sessionStorage.getItem('isLoggedIn')) {
             // If not logged in, redirect to login.html
             window.location.href = "login.html";
         }
@@ -30,6 +30,17 @@
         <meta property="og:description" content="an open source games site hosting 500+ games, useful utilities, powerful settings + a clean user interface">
   </head>
   <body>
+    <script>
+      // Listen for key combination to log out
+      document.addEventListener('keydown', function(event) {
+          // Example: Ctrl + Shift + L to log out
+          if (event.ctrlKey && event.shiftKey && event.key === 'L') {
+              sessionStorage.removeItem('isLoggedIn'); // Clear the login state
+              window.location.href = "login.html"; // Redirect to login page
+          }
+      });
+  </script>
+  
     
      <div id="blackout"></div>
      <div id="updPopup">
@@ -44,6 +55,7 @@
                     <li>download 200+ games from the site by clicking the download button to the left of them</li>
                     <li>after one game is downloaded, loading the site without an internet connection will send you to an offline version on the site where you can access downloaded games</li>
                     <li>supports ruffle/flash + works seamlessly with compatible games</li>
+                    <li>IMPORTANT:Press Ctrl+Shift+L to log out</li>
                   </ul>
                 </li>
                 <li>added 132 games
@@ -59,7 +71,7 @@
                         <li>flipline games: cactus mccoy, cactus mccoy 2, papa louie, papa louie 2, papa louie 3, steak and jake, steak and jake: midnight march</li>
                         <li>other games: backrooms 2d, basket random, csgo clicker, doom, funny shooter 2, gun fest, infinite craft, lows adventures 2, pako highway, recoil, run 3 plus, slope city, state io, sudoku, superhero drop, balloon run, crazy tunnel 3d, eaglercraft 1.8, geometry dash sky, gold digger frvr, hexgl, house of hazards, pick crafter, precision client, subway runner, xx142-b2.exe</li>
                       </ul>
-                    </li>
+                    
                     <li>added 4 apps:</li>
                       <ul>
                         <li>calculator: a simple calculator, allowing you to perform simple addition, subtraction, multiplication and division</li>
@@ -67,10 +79,10 @@
                         <li>zip opener: directly upload and view/download individual files inside a zip archive</li>
                         <li>godoblocks: a mimick of the 2005 roblox beta era - recreated entirely in godot</li>
                       </ul>
-                    </li>
+                    
                     <li>fixed friday night funkin &amp; drift hunters</li>
-                  </ul>
-                </li>
+                  
+                
                 <br>
                 <li>settings overhaul
                   <ul>
@@ -143,7 +155,7 @@
                     <li>css stylesheets have been renamed to make it easier to sort through</li>
                   </ul>
                 </li>
-              </ul>        
+                     
         </div>
         <div id="updConfirmFrame"><button id="updConfirm">okay</button></div>
       </div>
@@ -209,10 +221,10 @@
 
       <script>
         document.addEventListener('DOMContentLoaded', function () {
-            if (!localStorage.getItem('v10-update')) {
+            if (!sessionStorage.getItem('v10-update')) {
                 document.getElementById('blackout').style.display = 'block';
                 document.getElementById('updPopup').style.display = 'block';
-                localStorage.setItem('v10-update', 'true');
+                sessionStorage.setItem('v10-update', 'true');
             }
             document.getElementById('updConfirm').addEventListener('click', function () {
                 document.getElementById('blackout').style.display = 'none';
