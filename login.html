@@ -6,7 +6,7 @@
     <title>Login</title>
   </head>
   <body>
-    <h1>Login</h1>
+    <h1>Login to Access the Game</h1>
     <form id="loginForm">
       <input
         type="password"
@@ -18,30 +18,7 @@
       <p id="errorMessage" style="color: red"></p>
     </form>
 
-    <script>
-      document
-        .getElementById("loginForm")
-        .addEventListener("submit", async function (event) {
-          event.preventDefault();
-
-          const password = document.getElementById("password").value;
-          const response = await fetch("/.netlify/functions/login", {
-            method: "POST",
-            body: JSON.stringify({ password }),
-            headers: { "Content-Type": "application/json" },
-          });
-
-          const result = await response.json();
-
-          if (response.status === 200) {
-            // Password is correct, set login status and redirect to index.html
-            localStorage.setItem("isLoggedIn", "true"); // Set login status
-            window.location.href = "/index.html"; // Redirect to index.html after login
-          } else {
-            // Show error message
-            document.getElementById("errorMessage").innerText = result.message;
-          }
-        });
-    </script>
+    <script src="login.js"></script>
+    <!-- Link to the login.js file -->
   </body>
 </html>
