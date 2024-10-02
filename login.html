@@ -4,19 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
+    <link rel="stylesheet" href="login.css" />
   </head>
   <body>
-    <h1>Login to Access the Game</h1>
-    <form id="loginForm">
-      <input
-        type="password"
-        id="password"
-        placeholder="Enter password"
-        required
-      />
-      <button type="submit">Login</button>
-      <p id="errorMessage" style="color: red"></p>
-    </form>
+    <div class="login">
+      <h1>Login to Seraph</h1>
+      <form id="loginForm" method="post">
+        <input
+          type="password"
+          name="p"
+          id="password"
+          placeholder="Password"
+          required="required"
+        />
+        <button type="submit" class="btn btn-primary btn-block btn-large">
+          Let me in.
+        </button>
+        <p id="errorMessage" style="color: red"></p>
+      </form>
+    </div>
 
     <script src="login.js"></script>
     <!-- Link to the login.js file -->
